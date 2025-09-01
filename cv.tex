@@ -17,7 +17,6 @@
 %	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 %	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 %	THE SOFTWARE.
-%	
 %
 %-----------------------------------------------------------------------------------------------------------------------------------------------%
 
@@ -25,89 +24,38 @@
 %	DOCUMENT DEFINITION
 %----------------------------------------------------------------------------------------
 
-% article class because we want to fully customize the page and not use a cv template
-\documentclass[a4paper,12pt]{article}
-
-%----------------------------------------------------------------------------------------
-%	FONT
-%----------------------------------------------------------------------------------------
-
-% % fontspec allows you to use TTF/OTF fonts directly
-% \usepackage{fontspec}
-% \defaultfontfeatures{Ligatures=TeX}
-
-% % modified for ShareLaTeX use
-% \setmainfont[
-% SmallCapsFont = Fontin-SmallCaps.otf,
-% BoldFont = Fontin-Bold.otf,
-% ItalicFont = Fontin-Italic.otf
-% ]
-% {Fontin.otf}
+\documentclass[a4paper,11pt]{article}
 
 %----------------------------------------------------------------------------------------
 %	PACKAGES
 %----------------------------------------------------------------------------------------
 \usepackage{url}
-\usepackage{parskip} 	
-
-%other packages for formatting
-\RequirePackage{color}
-\RequirePackage{graphicx}
+\usepackage{parskip}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage[scale=0.9]{geometry}
-
-%tabularx environment
 \usepackage{tabularx}
-
-%for lists within experience section
 \usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fontawesome5}
+\usepackage[unicode, draft=false]{hyperref}
+
+%----------------------------------------------------------------------------------------
+%	FORMATTING
+%----------------------------------------------------------------------------------------
 
 % centered version of 'X' col. type
 \newcolumntype{C}{>{\centering\arraybackslash}X} 
 
-%to prevent spillover of tabular into next pages
-\usepackage{supertabular}
-\usepackage{tabularx}
-\newlength{\fullcollw}
-\setlength{\fullcollw}{0.47\textwidth}
-
-%custom \section
-\usepackage{titlesec}				
-\usepackage{multicol}
-\usepackage{multirow}
-
-%CV Sections inspired by: 
-%http://stefano.italians.nl/archives/26
+% custom section formatting
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{10pt}{10pt}
+\titlespacing{\section}{0pt}{8pt}{8pt}
 
-%for publications
-\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
-
-%Setup hyperref package, and colours for links
+% hyperref setup
 \usepackage[unicode, draft=false]{hyperref}
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
-\addbibresource{citations.bib}
-\setlength\bibitemsep{1em}
-
-%for social icons
-\usepackage{fontawesome5}
-
-%debug page outer frames
-%\usepackage{showframe}
-
 
 % job listing environments
-\newenvironment{jobshort}[2]
-    {
-    \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
-    \end{tabularx}
-    }
-    {
-    }
-
 \newenvironment{joblong}[2]
     {
     \begin{tabularx}{\linewidth}{@{}l X r@{}}
@@ -121,97 +69,83 @@
     \end{minipage}    
     }
 
-
-
 %----------------------------------------------------------------------------------------
 %	BEGIN DOCUMENT
 %----------------------------------------------------------------------------------------
 \begin{document}
 
-% non-numbered pages
 \pagestyle{empty} 
 
 %----------------------------------------------------------------------------------------
 %	TITLE
 %----------------------------------------------------------------------------------------
 
-% \begin{tabularx}{\linewidth}{ @{}X X@{} }
-% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
-% \raisebox{-0.05\height}\faGithub\ username \ | \
-% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
-% \end{tabularx}
-
 \begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{Your Name} \\[7.5pt]
-\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ username} \ $|$ \ 
-\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
-\href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
-\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ email@mysite.com} \ $|$ \ 
-\href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
+\Huge{Alain Cheng} \\[7.5pt]
+\href{https://github.com/cheng-alain}{\raisebox{-0.05\height}\faGithub\ cheng-alain} \ $|$ \ 
+\href{https://www.linkedin.com/in/alain-cheng}{\raisebox{-0.05\height}\faLinkedin\ alain-cheng} \ $|$ \ 
+\href{https://portfolio-url.com}{\raisebox{-0.05\height}\faGlobe \ portfolio} \ $|$ \ 
+\href{mailto:Alain.cheng@protonmail.com}{\raisebox{-0.05\height}\faEnvelope \ Alain.cheng@protonmail.com} \ $|$ \ 
+\href{tel:+33650425904}{\raisebox{-0.05\height}\faMobile \ 06.50.42.59.04} \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
-% EXPERIENCE SECTIONS
+%	SECTIONS
 %----------------------------------------------------------------------------------------
 
-%Interests/ Keywords/ Summary
-\section{Summary}
-This CV can also be automatically complied and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
+\section{Profil}
+Ingénieur DevOps Passionné par l'automatisation et l'infrastructure cloud, je conçois et maintiens des environnements DevOps robustes et scalables.
 
-%Experience
-\section{Work Experience}
+\section{Expérience Professionnelle}
 
-\begin{jobshort}{Designation}{Jan 2021 - present}
-long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width
-\end{jobshort}
+\begin{joblong}{Ingénieur DevOps / SysOps - Flaminem}{Sep 2023 - Sep 2025}
+\item Développement et maintenance de rôles Ansible pour automatisation complète des déploiements
+\item Création et déploiement de charts Helm personnalisés (GLPI, Diun, Glauth)
+\item Surveillance des plateformes avec outils de monitoring (Prometheus/Grafana)
+\item Administration et optimisation des chaînes GitLab CI/CD et runners
+\item Implémentation architecture SSO complète avec backend LDAP et intégration applications métier
+\item Support technique équipes développement : débogage containers, accès ressources, dépannage réseau
+\end{joblong}
 
-
-\begin{joblong}{Designation}{Mar 2019 - Jan 2021}
-\item long long line of blah blah that will wrap when the table fills the column width
-\item again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
+\begin{joblong}{Administrateur Système - Ad Education}{Oct 2022 - Sep 2023}
+\item Gestion de l'Active Directory
+\item Administration, Gestion à distance des bornes WiFi Cisco Meraki
+\item Planifications de mise en place d'infrastructures réseaux sur divers sites distants (Baies de brassage, Serveurs, Routeur, Switch...)
+\item Résolution incidents système/réseau avec gestion de tickets
 \end{joblong}
   
-%Projects
-\section{Projects}
+\section{Projets}
 
 \begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
+\textbf{Infrastructure DevOps AudioProthèse+} & \hfill \href{https://github.com/cheng-alain}{Projet d'études M2} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{Architecture DevOps complète pour réseau de 50+ centres d'audioprothèse avec conformité RGPD. Automatisation des déploiements, mise en place d'observabilité centralisée, et optimisation des coûts par mutualisation des ressources cloud.}  \\
 \end{tabularx}
 
-%----------------------------------------------------------------------------------------
-%	EDUCATION
-%----------------------------------------------------------------------------------------
-\section{Education}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{CLI d'Authentification Golang} & \hfill \href{https://github.com/cheng-alain}{Projet d'études M1} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{Interface ligne de commande en Go pour intégration de solutions d'authentification modernes. Implémentation de la gestion utilisateurs et permissions via API REST avec tests unitaires complets.}  \\
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Homelab Kubernetes sur Raspberry Pi} & \hfill \href{https://github.com/cheng-alain}{Homelab} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{Cluster Kubernetes mono-nœud sur Raspberry Pi hébergeant portfolio personnel, CI/CD, monitoring et stockage distribué. Plateforme d'expérimentation pour tester différentes stacks open source DevOps.}  \\
+\end{tabularx}
+
+\section{Formation}
 \begin{tabularx}{\linewidth}{@{}l X@{}}	
-2030 - present & PhD (Subject) at \textbf{University} \hfill \normalsize (GPA: 4.0/4.0) \\
-
-2023 - 2027 & Bachelor's Degree at \textbf{College} \hfill (GPA: 4.0/4.0) \\ 
-
-2022 & Class 12th Some Board \hfill  (Grades) \\
-
-2021 & Class 10th Some Board \hfill  (Grades) \\
+2023 - 2025 & Master DevOps - \textbf{SUP DE VINCI ISI PARIS} \\
+2022 - 2023 & Bachelor Cybersécurité et Réseaux - \textbf{ECE. École d'ingénieurs} \\
+2019 - 2022 & DUT Réseaux \& Télécommunication - \textbf{Université Paris-Est Créteil} \\
 \end{tabularx}
 
-%----------------------------------------------------------------------------------------
-%	PUBLICATIONS
-%----------------------------------------------------------------------------------------
-\section{Publications}
-\begin{refsection}[citations.bib]
-\nocite{*}
-\printbibliography[heading=none]
-\end{refsection}
-
-%----------------------------------------------------------------------------------------
-%	SKILLS
-%----------------------------------------------------------------------------------------
-\section{Skills}
+\section{Compétences Techniques}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Some Skills &  \normalsize{This, That, Some of this and that etc.}\\
-Some More Skills  &  \normalsize{Also some more of this, Some more that, And some of this and that etc.}\\  
+Orchestration & \normalsize{Kubernetes, ArgoCD, Helm, Docker}\\
+CI/CD \& IaC & \normalsize{GitLab/GitHub Actions, Terraform, Ansible, Traefik}\\
+Langages \& Scripts & \normalsize{Golang, Python, Bash, YAML, PowerShell}\\
+Infrastructure \& Cloud & \normalsize{Linux, AWS, Azure}\\
+Monitoring \& Sécurité & \normalsize{Prometheus, Grafana, ELK Stack, Vault}\\
+Bases de données & \normalsize{PostgreSQL, Redis}\\
 \end{tabularx}
-
-\vfill
-\center{\footnotesize Last updated: \today}
 
 \end{document}
